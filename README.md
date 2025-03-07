@@ -179,6 +179,11 @@ http://EC2-Instance-DNS-Address:42000
 ![Web Interface](/img/aws.png)
 ---
 
+
+https://github.com/user-attachments/assets/4acecdc8-9d8d-4787-b397-ff96346f2369
+
+
+
 ## **👨‍💻 Author**
 📌 Developed by **[Your Name]**.
 
