@@ -48,4 +48,26 @@ public class PropertyController {
         service.deleteProperty(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/busqueda")
+    public List<Property> searchProperties(
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) Long minPrice,
+            @RequestParam(required = false) Long maxPrice,
+            @RequestParam(required = false) Integer minSize) {
+        return service.searchProperties(address, minPrice, maxPrice, minSize);
+    }
+
+
+    @PostMapping("/generate")
+    public ResponseEntity<String> generateProperties() {
+        service.generateSampleProperties();
+        return ResponseEntity.ok("100 propiedades generadas exitosamente.");
+    }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<String> deleteAllProperties() {
+        service.deleteAllProperties();
+        return ResponseEntity.ok("Todas las propiedades han sido eliminadas.");
+    }
 }

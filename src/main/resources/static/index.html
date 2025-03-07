@@ -1,46 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Management</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=1.1">
 </head>
 <body>
 <h2>Property Management</h2>
 
-<form id="propertyForm">
-    <label for="address">Address:</label>
-    <input type="text" id="address" required>
+<div class="container">
+    <div class="header-container">
+        <button id="toggleFilters" class="btn">Filtros</button>
+    </div>
 
-    <label for="price">Price:</label>
-    <input type="number" id="price" required>
+    <form id="propertyForm">
+        <div class="form-row">
+            <div class="input-group">
+                <label for="address">Dirección:</label>
+                <input type="text" id="address" required>
+            </div>
 
-    <label for="size">Size (sq ft):</label>
-    <input type="number" id="size" required>
+            <div class="input-group">
+                <label for="price">Precio:</label>
+                <input type="number" id="price" required>
+            </div>
 
-    <label for="description">Description:</label>
-    <textarea id="description" required></textarea>
+            <div class="input-group">
+                <label for="size">Tamaño (m²):</label>
+                <input type="number" id="size" required>
+            </div>
 
-    <button type="submit">Add Property</button>
-</form>
+            <div class="input-group">
+                <label for="description">Descripción:</label>
+                <textarea id="description" required></textarea>
+            </div>
 
-<h3>Property List</h3>
-<table id="propertyTable">
-    <thead>
-    <tr>
-        <th>Address</th>
-        <th>Price</th>
-        <th>Size</th>
-        <th>Description</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Properties will be inserted here dynamically -->
-    </tbody>
-</table>
+            <button type="submit" class="btn">Añadir Propiedad</button>
+        </div>
+    </form>
 
-<script src="js/app.js"></script>
+    <h3>Lista de Propiedades</h3>
+    <table id="propertyTable">
+        <thead>
+        <tr>
+            <th>Dirección</th>
+            <th>Precio (COP)</th>
+            <th>Área (m²)</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+<div id="filterSection" class="filter-container">
+    <button id="closeFilters" class="close-btn">✖</button>
+    <h3>Filtros</h3>
+
+    <label for="filterType">Seleccionar Filtro:</label>
+    <select id="filterType">
+        <option value="address">Dirección</option>
+        <option value="minPrice">Precio mínimo</option>
+        <option value="maxPrice">Precio máximo</option>
+        <option value="minSize">Tamaño mínimo</option>
+    </select>
+
+    <label for="filterValue">Valor:</label>
+    <input type="text" id="filterValue">
+
+    <div class="btn-container">
+        <button id="searchButton" class="btn">Aplicar Filtros</button>
+        <button id="resetFilters" class="btn">Restablecer</button>
+    </div>
+
+
+</div>
+
+<script type="module" src="js/app.js?v=1.1"></script>
 </body>
 </html>

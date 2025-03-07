@@ -2,27 +2,271 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 20px;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
+h2, h3 {
+    text-align: center;
+    color: #007bff;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de filtros alineado con la tabla */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sidebar de filtros */
+.filter-container {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1001;
+}
+
+.filter-container.show {
+    left: 0;
+}
+/* Ajuste del contenedor de filtros */
+.filter-container select,
+.filter-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#overlay.show {
+    display: block;
+}
+
+/* Ajuste de tabla */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #007bff;
+    color: white;
 }
 
-button {
-    margin: 5px;
-    padding: 5px 10px;
+/* Formulario de añadir propiedad */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 🔹 Ajuste del contenedor de filtros */
+.filter-container {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaciado entre elementos */
+}
+
+/* 🔹 Mostrar el overlay de filtros */
+.filter-container.show {
+    left: 0;
+}
+
+/* 🔹 Estilo mejorado para los campos de entrada */
+.filter-container select,
+.filter-container input {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+}
+
+/* 🔹 Botones dentro del overlay */
+.filter-container .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* 🔹 Espaciado entre botones */
+.filter-container .btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+/* 🔹 Ajuste de botón de cerrar */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 10px;
+}
+
+
+/* 🔹 Fondo difuminado cuando se abre el modal */
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 🔹 Estilo general del modal */
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+/* 🔹 Botones dentro del modal */
+.modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-buttons button {
+    padding: 8px 15px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
+
+.confirm-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+

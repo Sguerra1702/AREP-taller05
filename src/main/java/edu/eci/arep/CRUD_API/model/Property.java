@@ -13,5 +13,14 @@ public class Property {
     private Double price;
     private Double size;
     private String description;
+
+    public Property() {
+    }
+    public Property(String address, long l, int size, String description) {
+        this.address = address;
+        this.price = (double) l;
+        this.size = (double) size;
+        this.description = description;
+    }
 }
 
