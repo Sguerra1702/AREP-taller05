@@ -3,7 +3,8 @@ import SuccessModal from "../modals/SuccessModal.js";
 
 const deleteModal = new DeleteModal();
 const successModal = new SuccessModal();
-const apiUrl = "http://localhost:8080/properties";
+const apiUrl = `${window.location.origin}/properties`;
+
 
 let allProperties = []; // Almacena todas las propiedades originales
 let filteredProperties = []; // Almacena las propiedades filtradas
